@@ -1,0 +1,142 @@
+{% extends "management/base.html" %}
+{% load staticfiles %}
+{% block title %}添加图书{% endblock %}
+
+{% block content %}
+
+    <div class="row-fluid">
+        <div class="col-md-2">
+            <div class="navbar navbar-inverse navbar-left">
+                <li><button type="button" class ="btn btn-inverse navbar-btn">机载通用设备</button></li>
+                <li><a href="#">通用设改装备</a></li>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <form method="POST" role="form" class="form-horizontal">
+                    {% csrf_token %}
+                    <h1 class="form-signin-heading text-center">物资入库</h1>
+
+                    <div class="form-group">
+                        <label for="id_name" class="col-md-3 control-label">物资类型：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="id_name" required name="name" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_author" class="col-md-3 control-label">物资名称：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="author" id="id_author">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_category" class="col-md-3 control-label">物资型号：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="category" id="id_category">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_price" class="col-md-3 control-label">库房编号：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="price" id="id_price">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">库存状态：</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">库存数量：</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">维护科室:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">计量编号:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">有效期限:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">出厂编号:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">计数单位:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">芯数:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">度量单位:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">装机件号:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">阈值:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_pubdate" class="col-md-3 control-label">备注:</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" required name="publish_date" id="id_pubdate">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-4">
+                            <button class="btn btn btn-primary btn-block" type="submit">提交</button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+
+
+
+{% endblock %}

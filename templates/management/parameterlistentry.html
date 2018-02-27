@@ -1,0 +1,121 @@
+{% extends "management/base.html" %}
+{% load staticfiles %}
+{% block title %}选择架机型号{% endblock %}
+
+{% block extrajs %}
+    <script>
+        $(document).delegate('#add_aircraft','click',function(){
+            console.log(1);
+            $('#myModal-add-aircraft-info').modal('show');
+        });
+
+        $(document).delegate('#addBtnSubmit','click',function(){
+
+            $.ajax({
+                url: "/add_aircraftinfo/",
+                data: $('#addAircraftInfoForm').serialize(),
+                cache: false,
+                type: "GET",
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                    if (data.res = "ok")
+                    {
+                        $('#myModal-add-info').modal('hide');
+                        window.location.reload();
+                    }
+                    else
+                        alert(data);
+                },
+                error: function (data) {
+                    alert("请求异常！");
+                }
+            });
+
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <span class="caption-subject font-blue-hoki uppercase">选择架机型号数据库</span>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form class="horizontal-form" method="post">
+            {% csrf_token %}
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">型号</label>
+                                <select class="form-control" required name="aircraft_model">
+                                    {% for model in aircraft_model_category %}
+                                        <option value= {{ model.aircraft_model }} >{{ model.aircraft_model }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">架机</label>
+                                <select class="form-control"  required name="aircraft_number">
+                                    {% for number in aircraft_number_category %}
+                                        <option value={{ number.aircraft_number }}>{{ number.aircraft_number }}</option>
+                                    {% endfor %} }
+                                </select>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="form-actions right">
+                        <button type="button" class="btn default" id="add_aircraft">添加架机/型号</button>
+                        <button type="submit" class="btn blue">
+                            <i class="fa fa-check"></i> 进入</button>
+                    </div>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal-add-aircraft-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" id="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h1 class="modal-title text-center" id="myModalLabel">添加架机型号</h1>
+                </div>
+                <form id="addAircraftInfoForm" role="form" class="form-horizontal" >
+                    <div class="form-group">
+                        <label for="add_aircraft_model" class="col-md-3 control-label">飞机型号：</label>
+                        <div class="col-md-8 ">
+                            <select class="form-control" required name="aircraft_model" id="add_aircraft_model">
+                                <option>ARJ21</option>
+                                <option>C919</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add_aircraft_number" class="col-md-3 control-label">飞机架机：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="aircraft_number" id="add_aircraft_number">
+                            <span class="help-block">输入三位数据架机号</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="addBtnSubmit">提交</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends "management/base.html" %}
+{% block title %}添加模拟量参数{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                {% if state == 'success' %}
+                    <div class="well">
+                        <h2 class="text-success text-center">添加成功</h2>
+                    </div>
+                {% elif state == 'error' %}
+                    <div class="well">
+                        <h2 class="text-danger text-center">添加失败</h2>
+                    </div>
+                {% endif %}
+                <form method="POST" role="form" class="form-horizontal" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1 class="form-signin-heading text-center">添加参数</h1>
+
+                    <div class="form-group">
+                        <label for="id_name" class="col-md-3 control-label">参数名称：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="id_name" required name="name" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_identifier" class="col-md-3 control-label">参数符号：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="identifier" id="id_identifier">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_name_output" class="col-md-3 control-label">输出符号：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="name_output" id="id_name_output">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_range_min" class="col-md-3 control-label">最大值：</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" required name="range_min" id="id_range_min">
+                        </div>
+                        <label for="id_range_max" class="col-md-3 control-label">最小值：</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" required name="range_max" id="id_range_max">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_unit" class="col-md-3 control-label">单位：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="id_unit" required name="unit" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_accuracy" class="col-md-3 control-label">精度：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="accuracy" id="id_accuracy">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_samplerate" class="col-md-3 control-label">采样率：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="samplerate" id="id_samplerate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_type" class="col-md-3 control-label">参数类型：</label>
+                        <div class="col-md-9 ">
+                            <select class="form-control" required name="type" id="id_type">
+                                <option>开关量</option>
+                                <option>模拟量</option>
+                                <option>数字量</option></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_source" class="col-md-3 control-label">参数来源：</label>
+                        <div class="col-md-9 ">
+                            <select class="form-control" required name="source" id="id_source">
+                                <option>抽引</option>
+                                <option>加装</option></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_airborne_monitor" class="col-md-3 control-label">机载监控：</label>
+                        <div class="col-md-3 ">
+                            <select class="form-control" required name="airborne_monitor" id="id_airborne_monitor">
+                                <option>是</option>
+                                <option>否</option></select>
+                        </div>
+                        <label for="id_ground_monitor" class="col-md-3 control-label">地面监控：</label>
+                        <div class="col-md-3 ">
+                            <select class="form-control" required name="ground_monitor" id="id_ground_monitor">
+                                <option>是</option>
+                                <option>否</option></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_system" class="col-md-3 control-label">系统/专业：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="system" id="id_system">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_responsibility" class="col-md-3 control-label">负责方：</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" required name="responsibility" id="id_responsibility">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-4">
+                            <button class="btn btn btn-primary btn-block" type="submit">添加</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

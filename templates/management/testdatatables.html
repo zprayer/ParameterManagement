@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="D:/Django APP/ParametersManagement/static/css/jquery.dataTables.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="D:/Django APP/ParametersManagement/static/js/jquery.js"></script>
+
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="D:/Django APP/ParametersManagement/static/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#person').dataTable({ // 和<table>的id对应，指定初始化datatables。
+
+                //填充的数据，这里用的是静态数据，数据源可以来自前台，也可以来自服务器
+                "data": [
+                    { "name": "黄蓉","corpname":"丐帮","dynasty":"南宋","gender":"女","job":"丐帮帮主"},
+                    { "name": "杨过","corpname":"古墓派","dynasty":"南宋","gender":"男","job": "神雕侠" }
+                ],
+                //给列赋值，这里的列名需要和data的数据名对应
+                "columns": [
+                    { "data": "name" },
+                    { "data": "corpname" },
+                    { "data": "dynasty" },
+                    { "data": "gender" },
+                    { "data": "job" }
+                ]
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <table id="person" class="display" cellspacing="0" style="width:100%">
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>门派</td>
+                <td>朝代</td>
+                <td>性别</td>
+                <td>职业</td>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+</body>
+</html>
