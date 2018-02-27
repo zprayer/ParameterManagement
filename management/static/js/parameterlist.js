@@ -62,7 +62,7 @@ $(function() {
                     '<div class="btn-group">' +
                     '<button class="btn btn-sm green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> 传感器选型 <i class="fa fa-angle-down"></i> </button> ' +
                     '<ul class="dropdown-menu pull-left" role="menu"> ' +
-                    '<li> <a href="javascript:;"> <i class="icon-docs"></i> 编辑 </a> </li> ' +
+                    '<li> <a type="submit" data-target="#myModal-modify-sensor" data-toggle="modal" data-id =' + data + '> <i class="icon-docs"></i> 编辑 </a> </li> ' +
                     '<li> <a href="javascript:;"> <i class="icon-tag"></i> 删除 </a> </li> ' +
                     '</ul> ' +
                     '</div>' +

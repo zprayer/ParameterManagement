@@ -235,7 +235,7 @@
             </div><!-- /.modal-content -->
         </div>
     </div>
-<!--编辑页面开始-->
+    <!--编辑页面开始-->
     <div class="modal fade" id="myModal-modify-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -247,6 +247,131 @@
                 </div>
                 <form id="modifyParForm" role="form" class="form-horizontal" >
 
+                    <div class="form-group">
+                        <label for="modify_name" class="col-md-3 control-label">参数名称：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="modify_name" required name="name" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_identifier" class="col-md-3 control-label">参数符号：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="identifier" id="modify_identifier">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_name_output" class="col-md-3 control-label">输出符号：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="name_output" id="modify_name_output">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_range_min" class="col-md-3 control-label">最大值：</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" required name="range_min" id="modify_range_min">
+                        </div>
+                        <label for="modify_range_max" class="col-md-2 control-label">最小值：</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" required name="range_max" id="modify_range_max">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_unit" class="col-md-3 control-label">单位：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="modify_unit" required name="unit" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_accuracy" class="col-md-3 control-label">精度：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="accuracy" id="modify_accuracy">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_samplerate" class="col-md-3 control-label">采样率：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="samplerate" id="modify_samplerate">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_type" class="col-md-3 control-label">参数类型：</label>
+                        <div class="col-md-8 ">
+                            <select class="form-control" required name="type" id="modify_type">
+                                <option>开关量</option>
+                                <option>模拟量</option>
+                                <option>数字量</option></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_source" class="col-md-3 control-label">参数来源：</label>
+                        <div class="col-md-8 ">
+                            <select class="form-control" required name="source" id="modify_source">
+                                <option>抽引</option>
+                                <option>加装</option></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_airborne_monitor" class="col-md-3 control-label">机载监控：</label>
+                        <div class="col-md-3 ">
+                            <select class="form-control" required name="airborne_monitor" id="modify_airborne_monitor">
+                                <option>是</option>
+                                <option>否</option></select>
+                        </div>
+                        <label for="modify_ground_monitor" class="col-md-2 control-label">地面监控：</label>
+                        <div class="col-md-3 ">
+                            <select class="form-control" required name="ground_monitor" id="modify_ground_monitor">
+                                <option>是</option>
+                                <option>否</option></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_system" class="col-md-3 control-label">系统/专业：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="system" id="modify_system">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modify_responsibility" class="col-md-3 control-label">负责方：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="responsibility" id="modify_responsibility">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="modifyBtnSubmit">保存</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+    <!--绑定传感器页面开始-->
+    <div class="modal fade" id="myModal-modify-sensor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" id="modify-modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h1 class="modal-title text-center" id="myModalLabel">编辑传感器型号</h1>
+                </div>
+                <div class="col-sm-5">
+                    <select id="select2-button-addons-single-input-group-sm" class="form-control js-data-example-ajax" dir="rtl">
+                        <option value="2126244" selected="selected">twbs/bootstrap</option>
+                    </select>
+                </div>
+                <form id="modifyParForm" role="form" class="form-horizontal" >
                     <div class="form-group">
                         <label for="modify_name" class="col-md-3 control-label">参数名称：</label>
                         <div class="col-md-8">
