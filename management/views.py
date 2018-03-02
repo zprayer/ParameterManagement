@@ -16,6 +16,38 @@ from  django.forms.models import model_to_dict
 from .myserializers import *
 
 
+class BindSensor(View):
+    def get(self,request):
+        ret = {}
+        parameter_id = request.GET.get('parameter_id',None)
+        sensor_id =request.GET.get('sensor_id')
+        if parameter_id == 'undefined':
+            parameter_id = None
+        if sensor_id == 'undefined':
+            sensor_id = None
+        try:
+            parameter_instance = Parameter.objects.get(id = parameter_id)
+        except Parameter.DoesNotExist:
+            ret['res'] = '参数不存在，请刷新页面检查参数是否已被删除！'
+        else:
+            try:
+                sensor_instance = SensorInfo.objects.get(id = sensor_id)
+            except SensorInfo.DoesNotExist:
+                ret['res'] = '传感器型号不存在，请查询传感器信息库检查传感器型号！'
+            else:
+                parameter_instance.sensor = sensor_instance
+                parameter_instance.save()
+                ret['res'] = '传感器绑定成功！'
+
+        return HttpResponse(json.dumps(ret),content_type='application/json')
+
+class SelectSensor(View):
+    def get(self,request):
+        search_term = request.GET.get('q')
+        res_qs = SensorInfo.objects.filter(sensor_type__contains = search_term).values('id','sensor_type','sensor_name','weight','voltage','power','signal_range','signal_type','comment')
+        res_json = json.dumps(list(res_qs))
+        return HttpResponse(res_json,content_type='application/json')
+
 class SensorList(TemplateView):
     template_name = 'management/view_sensor_list.html'
 

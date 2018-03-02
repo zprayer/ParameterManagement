@@ -25,5 +25,7 @@ urlpatterns = [
     url(r'^add_sensor/$',views.AddSensor.as_view(),name='add_sensor'),
     url(r'^modify_sensor/$', views.ModifySensor.as_view(), name='modify_sensor'),
     url(r'^delete_sensor/$',views.DeleteSensor.as_view(),name='delete_sensor'),
+    url(r'^select_sensor/$',views.SelectSensor.as_view(),name='select_sensor'),
+    url(r'^bind_sensor/$',views.BindSensor.as_view(),name='bind_sensor'),
 
 ]

@@ -62,7 +62,7 @@ $(function() {
                     '<div class="btn-group">' +
                     '<button class="btn btn-sm green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> 传感器选型 <i class="fa fa-angle-down"></i> </button> ' +
                     '<ul class="dropdown-menu pull-left" role="menu"> ' +
-                    '<li> <a type="submit" data-target="#myModal-modify-sensor" data-toggle="modal" data-id =' + data + '> <i class="icon-docs"></i> 编辑 </a> </li> ' +
+                    '<li> <a id = "SensorModifyOne" data-id =' + data + '> <i class="icon-docs"></i> 编辑 </a> </li> ' +
                     '<li> <a href="javascript:;"> <i class="icon-tag"></i> 删除 </a> </li> ' +
                     '</ul> ' +
                     '</div>' +
@@ -279,84 +279,43 @@ $(function() {
             }
         });
     });
-    //单选、多选
-	/**
-	 * 多选选中和取消选中,同时选中第一个单元格单选框,并联动全选单选框
+    //绑定传感器触发
+    $(document).delegate('#SensorModifyOne', 'click', function () {
+        var id = $(this).data("id");
+        console.log(id);
+        $("#modifySensorBtnSubmit").val(id);
+        console.log('btnsubmit:' + id)
+        $("#myModal-modify-sensor").modal('show');
+    });
+    //绑定传感器
+    $(document).delegate('#modifySensorBtnSubmit','click',function(){
+        var sensor_id = $('#id').val();
+        var parmeter_id = $(this).val();
+        console.log(sensor_id);
+        console.log(this);
+        $.ajax({
+            url: "/bind_sensor/",
+            data: "parameter_id=" + parmeter_id + "&sensor_id=" + sensor_id,
+            async: true,
+            type: "GET",
+            dataType: "json",
+            cache: false,    //不允许缓存
+            success: function (data) {
+                if (data.res = '传感器绑定成功！') {
+                    alert(data.res);
+                    $('#myModal-modify-sensor').modal('hide');
+                    window.location.reload();
+                }
+                else {
+                    alert(data.res);
+                }
 
-	$('#parametertable tbody').on('click', 'tr', function(event) {
-		var allChecked=$('input[name=allChecked]')[0];//关联全选单选框
-		$($(this).children()[0]).children().each(function(){
-			if(this.type=="checkbox" && (!$(event.target).is(":checkbox") && $(":checkbox",this).trigger("click"))){
-				if(!this.checked){
-					this.checked = true;
-					addValue(this);
-					var selected=dt_table.api().rows('.selected').data().length;//被选中的行数
-					//全选单选框的状态处理
-					var recordsDisplay=dt_table.api().page.info().recordsDisplay;//搜索条件过滤后的总行数
-					var iDisplayStart=dt_table.api().page.info().start;// 起始行数
-					if(selected === dt_table.api().page.len()||selected === recordsDisplay||selected === (recordsDisplay - iDisplayStart)){
-						allChecked.checked = true;
-					}
-				}else{
-					this.checked = false;
-					cancelValue(this);
-					allChecked.checked = false;
-				}
-			}
-		});
-		$(this).toggleClass('selected');//放在最后处理，以便给checkbox做检测
-        console.log($(this).val())
-	});
-*/
 
-
-	/**
-	 * 全选按钮被点击事件
-
-	$('input[name=allChecked]').click(function(){
-		if(this.checked){
-			$('#parametertable tbody tr').each(function(){
-				if(!$(this).hasClass('selected')){
-					$(this).click();
-				}
-			});
-		}else{
-			$('#parametertable tbody tr').click();
-		}
-	});
-*/
-	/**
-	 * 单选框被选中时将它的value放入隐藏域
-
-	function addValue(para) {
-		var userIds = $("input[name=id]");
-		if(userIds.val() === ""){
-			userIds.val($(para).val());
-		}else{
-			userIds.val(userIds.val()+","+$(para).val());
-		}
-	}
-*/
-	/**
-	 * 单选框取消选中时将它的value移除隐藏域
-
-	function cancelValue(para){
-		//取消选中checkbox要做的操作
-		var userIds = $("input[name=allChecked]");
-		var array = userIds.val().split(",");
-		userIds.val("");
-		for (var i = 0; i < array.length; i++) {
-			if (array[i] === $(para).val()) {
-				continue;
-			}
-			if (userIds.val() === "") {
-				userIds.val(array[i]);
-			} else {
-				userIds.val(userIds.val() + "," + array[i]);
-			}
-		}
-	}
-*/
-
+            },
+            error: function (data) {
+                alert("请求异常");
+            }
+        });
+    });
 
 });

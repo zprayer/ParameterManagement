@@ -3,15 +3,20 @@
 {% load staticfiles %}
 {% block title %}查看参数{% endblock %}
 {% block extracss %}
-    <link href="{% static 'metronic/global/plugins/datatables/datatables.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'metronic/global/plugins/datatables/datatables.min.css' %}" rel="stylesheet" type="text/css"
+          xmlns="http://www.w3.org/1999/html"/>
     <link href="{% static 'metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'metronic/global/plugins/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'metronic/global/plugins/select2/css/select2-bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block extrajs %}
     <script src="{% static 'metronic/global/scripts/datatable.js' %}" type="text/javascript"></script>
     <script src="{% static 'metronic/global/plugins/datatables/datatables.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'metronic/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js' %}" type="text/javascript"></script>
     <script src="{% static 'metronic/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'metronic/global/plugins/select2/js/select2.full.min.js' %}"  type="text/javascript"></script>
     <script type="text/javascript" src="{% static 'js/parameterlist.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/customselect2.js' %}"></script>
 {% endblock %}
 
 
@@ -357,7 +362,7 @@
         </div>
     </div>
     <!--绑定传感器页面开始-->
-    <div class="modal fade" id="myModal-modify-sensor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal-modify-sensor" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" id="modify-modal-header">
@@ -366,116 +371,81 @@
                     </button>
                     <h1 class="modal-title text-center" id="myModalLabel">编辑传感器型号</h1>
                 </div>
-                <div class="col-sm-5">
-                    <select id="select2-button-addons-single-input-group-sm" class="form-control js-data-example-ajax" dir="rtl">
-                        <option value="2126244" selected="selected">twbs/bootstrap</option>
-                    </select>
-                </div>
-                <form id="modifyParForm" role="form" class="form-horizontal" >
+                <form id="select-sensor" role="form" class="form-horizontal" >
                     <div class="form-group">
-                        <label for="modify_name" class="col-md-3 control-label">参数名称：</label>
+                        <label class=" col-md-3 control-label">传感器型号:</label>
+                        <div class="col-sm-5">
+                            <select id="select2-button-addons-single-input-group-sm" class="form-control ">
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <form id="requestSensorForm" role="form" class="form-horizontal" >
+                    <div class="form-group">
+                        <label hidden="hidden" for="id" class="col-md-3 control-label">序号：</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="modify_name" required name="name" autofocus>
+                            <input type="hidden" class="form-control" id="id" required name="id" disabled="disabled">
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="modify_identifier" class="col-md-3 control-label">参数符号：</label>
+                        <label for="sensor_name" class="col-md-3 control-label">传感器名称：</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" required name="identifier" id="modify_identifier">
+                            <input type="text" class="form-control" id="sensor_name" required name="sensor_name" disabled="disabled">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="modify_name_output" class="col-md-3 control-label">输出符号：</label>
+                        <label for="sensor_type" class="col-md-3 control-label">传感器型号：</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" required name="name_output" id="modify_name_output">
+                            <input type="text" class="form-control" required name="sensor_type" id="sensor_type" disabled="disabled">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="modify_range_min" class="col-md-3 control-label">最大值：</label>
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" required name="range_min" id="modify_range_min">
-                        </div>
-                        <label for="modify_range_max" class="col-md-2 control-label">最小值：</label>
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" required name="range_max" id="modify_range_max">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="modify_unit" class="col-md-3 control-label">单位：</label>
+                        <label for="weight" class="col-md-3 control-label">重量（g）：</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="modify_unit" required name="unit" autofocus>
+                            <input type="text" class="form-control" required name="weight" id="weight" disabled="disabled">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="modify_accuracy" class="col-md-3 control-label">精度：</label>
+                        <label for="voltage" class="col-md-3 control-label">供电要求(V)：</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" required name="accuracy" id="modify_accuracy">
+                            <input type="text" class="form-control" required name="voltage" id="voltage" disabled="disabled">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="modify_samplerate" class="col-md-3 control-label">采样率：</label>
+                        <label for="power" class="col-md-3 control-label">功耗：</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" required name="samplerate" id="modify_samplerate">
+                            <input type="text" class="form-control" id="power" required name="power" disabled="disabled">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="modify_type" class="col-md-3 control-label">参数类型：</label>
+                        <label for="signal_type" class="col-md-3 control-label">输出信号类型：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="signal_type" id="signal_type" disabled="disabled">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signal_range" class="col-md-3 control-label">输出信号范围：</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" required name="signal_range" id="signal_range" disabled="disabled">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment" class="col-md-3 control-label">备注：</label>
                         <div class="col-md-8 ">
-                            <select class="form-control" required name="type" id="modify_type">
-                                <option>开关量</option>
-                                <option>模拟量</option>
-                                <option>数字量</option></select>
+                            <input class="form-control" required name="comment" id="comment" disabled="disabled">
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="modify_source" class="col-md-3 control-label">参数来源：</label>
-                        <div class="col-md-8 ">
-                            <select class="form-control" required name="source" id="modify_source">
-                                <option>抽引</option>
-                                <option>加装</option></select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="modify_airborne_monitor" class="col-md-3 control-label">机载监控：</label>
-                        <div class="col-md-3 ">
-                            <select class="form-control" required name="airborne_monitor" id="modify_airborne_monitor">
-                                <option>是</option>
-                                <option>否</option></select>
-                        </div>
-                        <label for="modify_ground_monitor" class="col-md-2 control-label">地面监控：</label>
-                        <div class="col-md-3 ">
-                            <select class="form-control" required name="ground_monitor" id="modify_ground_monitor">
-                                <option>是</option>
-                                <option>否</option></select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="modify_system" class="col-md-3 control-label">系统/专业：</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" required name="system" id="modify_system">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="modify_responsibility" class="col-md-3 control-label">负责方：</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" required name="responsibility" id="modify_responsibility">
-                        </div>
-                    </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary" id="modifyBtnSubmit">保存</button>
+                        <button type="button" class="btn btn-primary" id="modifySensorBtnSubmit">提交</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->

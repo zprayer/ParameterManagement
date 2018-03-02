@@ -39,29 +39,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/management/models.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/management/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2178" max-vertical-offset="3146">
-              <caret line="124" column="62" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="62" />
+            <state vertical-scroll-proportion="-7.129225" vertical-offset="4488" max-vertical-offset="9240">
+              <caret line="41" column="66" selection-start-line="41" selection-start-column="66" selection-end-line="41" selection-end-column="66" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#48#0" expanded="true" />
+                <element signature="e#3069#3880#0" expanded="false" />
+                <element signature="e#7635#8928#0" expanded="false" />
+                <element signature="e#14294#14966#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/management/views.py">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/management/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1980" max-vertical-offset="8536">
-              <caret line="105" column="41" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-                <element signature="e#1736#2547#0" expanded="false" />
-                <element signature="e#6302#7595#0" expanded="false" />
-                <element signature="e#12961#13633#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="2432" max-vertical-offset="3080">
+              <caret line="120" column="10" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,11 +67,24 @@
       <file leaf-file-name="view_parameters_list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/management/view_parameters_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.419355" vertical-offset="5050" max-vertical-offset="8162">
-              <caret line="359" column="53" selection-start-line="359" selection-start-column="32" selection-end-line="359" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.32352942" vertical-offset="396" max-vertical-offset="2794">
+              <caret line="17" column="67" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="67" />
               <folding>
+                <element signature="n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/management/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.191176" vertical-offset="17165" max-vertical-offset="20438">
+              <caret line="821" column="76" selection-start-line="821" selection-start-column="76" selection-end-line="821" selection-end-column="76" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,80 +92,44 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/management/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="594">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+              <caret line="21" column="111" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="111" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="components_select2.html" pinned="false" current-in-tab="false">
-        <entry file="file://F:/BaiduNetdiskDownload/metronic-475/metronic_v4.7.5/theme/admin_2/components_select2.html">
+      <file leaf-file-name="customselect2.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/management/static/js/customselect2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.1323528" vertical-offset="65239" max-vertical-offset="76692">
-              <caret line="3388" column="131" selection-start-line="3388" selection-start-column="52" selection-end-line="3388" selection-end-column="131" />
-              <folding>
-                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#0;n#div#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#0;n#div#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#div#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#a#0;n#nav#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#ul#0;n#nav#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="components-select2.js" pinned="false" current-in-tab="false">
-        <entry file="file://F:/BaiduNetdiskDownload/metronic-475/metronic_v4.7.5/theme/assets/pages/scripts/components-select2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.945946" vertical-offset="1209" max-vertical-offset="2904">
-              <caret line="50" column="32" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="924" max-vertical-offset="1540">
+              <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Python 3.5/Lib/site-packages/django/views/generic/base.py">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/management/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2275" max-vertical-offset="4730">
-              <caret line="113" column="17" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="249" max-vertical-offset="792">
+              <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base_datatable_view.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Python 3.5/Lib/site-packages/django_datatables_view/base_datatable_view.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3545" max-vertical-offset="5500">
-              <caret line="205" column="45" selection-start-line="205" selection-start-column="30" selection-end-line="205" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parameterlist.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="parameterlist.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/management/static/js/parameterlist.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2743539" vertical-offset="720" max-vertical-offset="7744">
-              <caret line="55" column="70" selection-start-line="55" selection-start-column="70" selection-end-line="55" selection-end-column="70" />
+            <state vertical-scroll-proportion="-9.621622" vertical-offset="4374" max-vertical-offset="5368">
+              <caret line="298" column="24" selection-start-line="298" selection-start-column="24" selection-end-line="298" selection-end-column="24" />
               <folding>
                 <element signature="e#480#1000#0" expanded="false" />
+                <element signature="e#6566#8059#0" expanded="false" />
+                <element signature="e#8139#8994#0" expanded="false" />
+                <element signature="e#9072#9248#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LM/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2029" max-vertical-offset="2926">
-              <caret line="107" column="25" selection-start-line="107" selection-start-column="25" selection-end-line="107" selection-end-column="25" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -224,17 +199,18 @@
         <option value="$PROJECT_DIR$/templates/management/login.html" />
         <option value="$PROJECT_DIR$/templates/management/parameterlistentry.html" />
         <option value="$PROJECT_DIR$/static/js/jquery.dataTables.js" />
-        <option value="$PROJECT_DIR$/templates/management/base.html" />
         <option value="$PROJECT_DIR$/management/forms.py" />
-        <option value="$PROJECT_DIR$/management/models.py" />
-        <option value="$PROJECT_DIR$/management/urls.py" />
         <option value="$PROJECT_DIR$/management/static/js/sensorlist.js" />
         <option value="$PROJECT_DIR$/templates/management/view_sensor_list.html" />
         <option value="$PROJECT_DIR$/management/myserializers.py" />
-        <option value="$PROJECT_DIR$/management/views.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/management/static/js/customselect2.js" />
         <option value="$PROJECT_DIR$/templates/management/view_parameters_list.html" />
+        <option value="$PROJECT_DIR$/management/urls.py" />
+        <option value="$PROJECT_DIR$/templates/management/base.html" />
         <option value="$PROJECT_DIR$/management/static/js/parameterlist.js" />
+        <option value="$PROJECT_DIR$/management/models.py" />
+        <option value="$PROJECT_DIR$/management/views.py" />
       </list>
     </option>
   </component>
@@ -931,19 +907,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34070796" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18259935" sideWeight="0.4963768" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18796992" sideWeight="0.4963768" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38938054" sideWeight="0.48227713" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944915" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5643341" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3329646" sideWeight="0.56390977" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29495472" sideWeight="0.47878787" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38938054" sideWeight="0.5177229" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18259935" sideWeight="0.5036232" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38938054" sideWeight="0.5177229" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18796992" sideWeight="0.5036232" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -982,32 +958,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="21" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/xadmin/vendor/bootstrap/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="308">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python 3.5/Lib/site-packages/xadmin-0.6.1-py3.5.egg/xadmin/static/xadmin/vendor/bootstrap/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="105384" max-vertical-offset="156266">
-          <caret line="4798" column="27" selection-start-line="4798" selection-start-column="21" selection-end-line="4798" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/meta.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33189654" vertical-offset="44" max-vertical-offset="8162">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python 3.5/Lib/site-packages/django/template/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6163793" vertical-offset="10340" max-vertical-offset="23694">
@@ -1167,13 +1122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/management/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="748">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/management/view_sensor_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5534591" vertical-offset="4356" max-vertical-offset="6006">
@@ -1223,31 +1171,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/management/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.677419" vertical-offset="396" max-vertical-offset="3740">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/management/myserializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="418">
           <caret line="12" column="30" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="30" />
-          <folding>
-            <element signature="e#23#34#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/management/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2178" max-vertical-offset="3146">
-          <caret line="124" column="62" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1255,22 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1870">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python 3.5/Lib/site-packages/django/views/generic/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2275" max-vertical-offset="4730">
-          <caret line="113" column="17" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python 3.5/Lib/site-packages/django_datatables_view/base_datatable_view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3545" max-vertical-offset="5500">
-          <caret line="205" column="45" selection-start-line="205" selection-start-column="30" selection-end-line="205" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1313,31 +1224,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/management/forms.py">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/common.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="594">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="2600" max-vertical-offset="11286">
+          <caret line="126" column="18" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/management/views.py">
+    <entry file="file://C:/Python 3.5/Lib/site-packages/django_datatables_view/base_datatable_view.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1980" max-vertical-offset="8536">
-          <caret line="105" column="41" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3545" max-vertical-offset="5500">
+          <caret line="205" column="45" selection-start-line="205" selection-start-column="30" selection-end-line="205" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/management/static/metronic/global/plugins/select2/js/select2.full.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08747515" vertical-offset="0" max-vertical-offset="503">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
           <folding>
-            <element signature="e#0#48#0" expanded="true" />
-            <element signature="e#1736#2547#0" expanded="false" />
-            <element signature="e#6302#7595#0" expanded="false" />
-            <element signature="e#12961#13633#0" expanded="false" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://F:/BaiduNetdiskDownload/metronic-475/metronic_v4.7.5/theme/assets/pages/scripts/components-select2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6799204" vertical-offset="2401" max-vertical-offset="2904">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://F:/BaiduNetdiskDownload/metronic-475/metronic_v4.7.5/theme/admin_2/components_select2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1323528" vertical-offset="65239" max-vertical-offset="76692">
-          <caret line="3388" column="131" selection-start-line="3388" selection-start-column="52" selection-end-line="3388" selection-end-column="131" />
+        <state vertical-scroll-proportion="2.684322" vertical-offset="59981" max-vertical-offset="76692">
+          <caret line="3200" column="54" selection-start-line="3200" selection-start-column="54" selection-end-line="3200" selection-end-column="54" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1351,30 +1275,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://F:/BaiduNetdiskDownload/metronic-475/metronic_v4.7.5/theme/assets/pages/scripts/components-select2.js">
+    <entry file="file://$PROJECT_DIR$/management/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.945946" vertical-offset="1209" max-vertical-offset="2904">
-          <caret line="50" column="32" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+          <caret line="21" column="111" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/management/static/js/customselect2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="924" max-vertical-offset="1540">
+          <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python 3.5/Lib/site-packages/django/views/generic/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1337209" vertical-offset="1681" max-vertical-offset="4730">
+          <caret line="113" column="17" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/management/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="249" max-vertical-offset="792">
+          <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/management/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.191176" vertical-offset="17165" max-vertical-offset="20438">
+          <caret line="821" column="76" selection-start-line="821" selection-start-column="76" selection-end-line="821" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/management/static/js/parameterlist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.621622" vertical-offset="4374" max-vertical-offset="5368">
+          <caret line="298" column="24" selection-start-line="298" selection-start-column="24" selection-end-line="298" selection-end-column="24" />
+          <folding>
+            <element signature="e#480#1000#0" expanded="false" />
+            <element signature="e#6566#8059#0" expanded="false" />
+            <element signature="e#8139#8994#0" expanded="false" />
+            <element signature="e#9072#9248#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/management/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2432" max-vertical-offset="3080">
+          <caret line="120" column="10" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/management/view_parameters_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.419355" vertical-offset="5050" max-vertical-offset="8162">
-          <caret line="359" column="53" selection-start-line="359" selection-start-column="32" selection-end-line="359" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.32352942" vertical-offset="396" max-vertical-offset="2794">
+          <caret line="17" column="67" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="67" />
           <folding>
+            <element signature="n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#!!top" expanded="false" />
             <element signature="n#div#2;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/management/static/js/parameterlist.js">
+    <entry file="file://$PROJECT_DIR$/management/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2743539" vertical-offset="720" max-vertical-offset="7744">
-          <caret line="55" column="70" selection-start-line="55" selection-start-column="70" selection-end-line="55" selection-end-column="70" />
+        <state vertical-scroll-proportion="-7.129225" vertical-offset="4488" max-vertical-offset="9240">
+          <caret line="41" column="66" selection-start-line="41" selection-start-column="66" selection-end-line="41" selection-end-column="66" />
           <folding>
-            <element signature="e#480#1000#0" expanded="false" />
+            <element signature="e#0#48#0" expanded="true" />
+            <element signature="e#3069#3880#0" expanded="false" />
+            <element signature="e#7635#8928#0" expanded="false" />
+            <element signature="e#14294#14966#0" expanded="false" />
           </folding>
         </state>
       </provider>

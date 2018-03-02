@@ -118,7 +118,7 @@ class Parameter(models.Model):
     system = models.CharField("系统/专业",max_length = 16)
     responsibility = models.CharField("负责方",max_length = 16)
     sensor_airborn_number = models.OneToOneField('AirbornNumber',null = True)
-    sensor = models.OneToOneField(SensorInfo,null = True)
+    sensor = models.ForeignKey('SensorInfo',null = True)
     position = models.ForeignKey(PositionInfo,null = True)
     acquisitionInfo = models.OneToOneField(AcquisitionInfo,null = True)
     #schematicInfo = models.ForeignKey(SchematicInfo,null = True)
