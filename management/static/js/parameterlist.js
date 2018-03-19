@@ -27,14 +27,8 @@ $(function() {
                 "sLast": "最后一页"
             }
         },
-        aoColumns: [
-            {
-                mData: 'id',
-                mRender: function (data, type, full, meta) {
-                    return '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline"> <input type="checkbox" class="checkboxes" value="' + data + '" name="id"/> <span></span> </label>';
-                }
-
-            },
+        columns: [
+            {mData: null},
             {mData: 'id'},
             {mData: 'name'},
             {mData: 'identifier'},
@@ -42,19 +36,58 @@ $(function() {
             {mData: 'unit'},
             {mData: 'system'},
             {mData: 'responsibility'},
+            {mData: 'sensor\\.id'},
             {mData: 'sensor\\.sensor_name'},
             {mData: 'sensor\\.sensor_type'},
             {mData: 'status'},
+            {mData: null}
+
+
+        ],
+        columnDefs: [
             {
-                mData: 'id',
-                mRender: function (data, type, full, meta) {
+                render: function (data) {
+                    return '<label class="mt-checkbox mt-checkbox-single mt-checkbox-outline"> <input type="checkbox" class="checkboxes" value="' + data.id + '" name="id"/> <span></span> </label>';
+                },
+                targets: 0
+
+            },
+            {
+                render:function(data,type,row){
+                    if(data.length)
+                    {
+                        return  '<span class="row-details row-details-close" data-detailstype = "request_details" data-id=' + row.id + '>&nbsp&nbsp&nbsp&nbsp'+row.name+'</span>' ;
+                    }
+                    else
+                    {
+                        return data
+                    }
+                },
+                targets: 2
+            },
+            {
+                render:function(data,type,row){//row.sensor.id报错，row是字典类型，采用row['sensor.id']索引
+                    if(data.length)
+                    {
+                        return  '<span class="row-details row-details-close" data-detailstype = "sensor_details" data-id=' + row['sensor.id'] + '>&nbsp&nbsp&nbsp&nbsp'+row['sensor.sensor_name']+'</span>' ;
+                    }
+                    else
+                    {
+                        return data
+                    }
+
+                },
+                targets: 9
+            },
+            {
+                render: function (data) {
                     //return data = '<button id="DetailOne" class="btn btn-primary btn-sm" data-id=' + data + '>详细信息</button>&nbsp&nbsp<button id="ModifyOne" class="btn btn-info btn-sm" data-id=' + data + '>编 辑</button>&nbsp&nbsp<button id="deleteOne" class="btn btn-danger btn-sm" data-id=' + data + '>删 除</button>';
                     return data = '<span>'+
                     '<div class="btn-group">' +
                     '<button class="btn btn-sm green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> 参数需求 <i class="fa fa-angle-down"></i> </button> ' +
                     '<ul class="dropdown-menu pull-left" role="menu"> ' +
-                    '<li> <a id = "RquestModifyOne" data-id =' + data + '> <i class="icon-docs"></i> 编辑 </a> </li> ' +
-                    '<li> <a id = "RquestDeleteOne" data-id =' + data + '> <i class="icon-tag"></i> 删除 </a> </li> ' +
+                    '<li> <a id = "RquestModifyOne" data-id =' + data.id + '> <i class="icon-docs"></i> 编辑 </a> </li> ' +
+                    '<li> <a id = "RquestDeleteOne" data-id =' + data.id + '> <i class="icon-tag"></i> 删除 </a> </li> ' +
                     '</ul> ' +
                     '</div>' +
                     '</span>&nbsp&nbsp' +
@@ -62,8 +95,8 @@ $(function() {
                     '<div class="btn-group">' +
                     '<button class="btn btn-sm green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> 传感器选型 <i class="fa fa-angle-down"></i> </button> ' +
                     '<ul class="dropdown-menu pull-left" role="menu"> ' +
-                    '<li> <a id = "SensorModifyOne" data-id =' + data + '> <i class="icon-docs"></i> 编辑 </a> </li> ' +
-                    '<li> <a href="javascript:;"> <i class="icon-tag"></i> 删除 </a> </li> ' +
+                    '<li> <a id = "SensorModifyOne" data-id =' + data.id + '> <i class="icon-docs"></i> 编辑 </a> </li> ' +
+                    '<li> <a id = "SensorDeleteOne" data-id =' + data.id + '> <i class="icon-tag"></i> 删除 </a> </li> ' +
                     '</ul> ' +
                     '</div>' +
                     '</span>&nbsp&nbsp' +
@@ -76,19 +109,12 @@ $(function() {
                     '</ul> ' +
                     '</div>' +
                     '</span>'
-                }
-            }
-
-
-        ],
-        aoColumnDefs: [
-            /*{
-            sDefaultContent: "Not found",
-            aTargets: ['_all']
-        },*/
+                },
+                targets: 12
+            },
             {
-                bVisible: false,
-                aTargets: [1,4,5]
+                visible: false,
+                targets: [1,4,5,8]
             }
         ],
         searching: true,
@@ -114,7 +140,6 @@ $(function() {
         },
         initComplete: initComplete
     });
-    console.log($('#aircraftinfo').data('aircraftmodel'));
 
     function initComplete(data) {
         var tableWrapper = jQuery('#parameterlist_wrapper');
@@ -137,7 +162,121 @@ $(function() {
                     $(this).parents('tr').toggleClass("active");
                 });
 
-    }
+    };
+    function format ( data,type ) {
+        //判断详细信息请求种类：参数需求、传感器、采集设备
+        var html_out;
+        if(type == 'request_details'){
+            html_out = '<table style="width:100%;text-align:left;" class ="table table-striped table-condensed table-hover">' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%" >参数名称:</td><td width = "80%">'+ data.name +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">软件标识符:</td><td width = "80%">'+ data.identifier +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">输出符号:</td><td width = "80%">'+ data.name_output +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%" >量程最小值:</td><td width = "80%">'+ data.range_min +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">量程最大值:</td><td width = "80%">'+ data.range_max +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">单位:</td><td width = "80%">'+ data.unit +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%" >精度:</td><td width = "80%">'+ data.accuracy +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">采样率:</td><td width = "80%">'+ data.samplerate +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">参数类型:</td><td width = "80%">'+ data.type +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">参数来源:</td><td width = "80%">'+ data.source +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%" >机载监控:</td><td width = "80%">'+ data.airborne_monitor +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">地面监控:</td><td width = "80%">'+ data.ground_monitor +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">所属系统:</td><td width = "80%">'+ data.system +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">负责方:</td><td width = "80%">'+ data.responsibility +'</td></tr>' +
+            '</table>';
+
+        }
+        else if(type == 'sensor_details'){
+            html_out = '<table style="width:100%;text-align:left;" class ="table table-striped table-condensed table-hover">' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%" >传感器名称:</td><td width = "80%">'+ data.sensor_name +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">传感器型号:</td><td width = "80%">'+ data.sensor_type +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">重量:</td><td width = "80%">'+ data.weight +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%" >供电要求:</td><td width = "80%">'+ data.voltage +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">功耗:</td><td width = "80%">'+ data.power +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">输出信号范围:</td><td width = "80%">'+ data.signal_range +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%" >输出信号类型:</td><td width = "80%">'+ data.signal_type +'</td></tr>' +
+            '<tr style="background-color:#c0edf1;"><td width = "20%">备注:</td><td width = "80%">'+ data.comment +'</td></tr>' +
+            '</table>';
+        }
+        else if(type =='acquisition_details'){
+
+        }
+
+        return html_out
+    };
+
+
+
+
+    $('.table').on('click', ' tbody td .row-details', function() {
+        var nTr = $(this).parents('tr')[0];
+        var detailsType = $(this).data("detailstype");
+        //if (dt_table.fnIsOpen(nTr))
+        if(dt_table.api().row(nTr).child.isShown())
+        {
+           //如果已经显示详细信息，判断是否是同一类详细信息请求,如果不是，先关之前打开的详细信息
+           if($(this).hasClass("row-details-open")){
+               console.log('ok');
+               /* This row is already open - close it */
+               $(this).addClass("row-details-close").removeClass("row-details-open");
+               //dt_table.fnClose(nTr);
+               dt_table.api().row(nTr).child.hide();
+
+           }
+           else{
+               $(".row-details-open").addClass("row-details-close").removeClass("row-details-open");
+               dt_table.api().row(nTr).child.hide();
+               $(this).trigger("click");
+           }
+
+        }
+        else
+        {
+           /* Open this row */
+           $(this).addClass("row-details-open").removeClass("row-details-close");
+           // 判断是什么类型的详细信息请求
+           if(detailsType == 'request_details'){
+               fnFormatDetails(nTr, "/request_parameter_info/",$(this).data("id"),detailsType);
+           }
+           else if(detailsType == 'sensor_details') {
+               fnFormatDetails(nTr, "/request_sensor_info/",$(this).data("id"),detailsType);
+           }
+           else if(detailsType == 'acquisition_details') {
+
+           }
+
+        }
+       });
+
+    function fnFormatDetails(nTr, pUrl,pdataId,pdataType) {
+        var id = pdataId;
+        var type = pdataType;
+        var url = pUrl;
+        $.ajax({
+            url:url,
+            data:"id=" + id,
+            cache: false,
+            type: "GET",
+            dataType: "json",
+            async: true,
+            success:function(data){
+                if (data.res == 'ok')
+                {
+                    //dt_table.fnOpen(nTr,format(data.responsedata[0],type),type);
+                    dt_table.api().row(nTr).child(format(data.responsedata[0],type),type).show();
+                }
+                else if(data.res == 'not exist')
+                    alert("参数已被删除！");
+                else
+                    alert("查询失败！");
+            },
+            error:function(){
+                alert("请求失败！")
+
+            }
+        });
+    };
+
+
 
     //按钮事件触发
     //编辑参数
@@ -185,8 +324,6 @@ $(function() {
     //提交编辑参数请求
     $(document).delegate('#modifyBtnSubmit','click',function(){
         var id = $(this).val();
-        console.log(id)
-        console.log($('#modifyParForm').serialize()+"id="+id);
         $.ajax({
             url:"/modify_parameter/",
             data:$('#modifyParForm').serialize()+"&id=" + id,
@@ -232,7 +369,7 @@ $(function() {
             dataType: "json",
             async: true,
             success: function (data) {
-                if (data.ok = "1")
+                if (data.ok == "1")
                 {
                     $('#myModal-add-info').modal('hide');
                     window.location.reload();
@@ -264,7 +401,7 @@ $(function() {
             dataType: "json",
             cache: false,    //不允许缓存
             success: function (data) {
-                if (data.ok = '1') {
+                if (data.ok == '1') {
                     alert("删除成功");
                     window.location.reload();
                 }
@@ -301,7 +438,7 @@ $(function() {
             dataType: "json",
             cache: false,    //不允许缓存
             success: function (data) {
-                if (data.res = '传感器绑定成功！') {
+                if (data.res == '传感器绑定成功！') {
                     alert(data.res);
                     $('#myModal-modify-sensor').modal('hide');
                     window.location.reload();
@@ -317,5 +454,38 @@ $(function() {
             }
         });
     });
+    //解绑传感器触发
+    $(document).delegate('#SensorDeleteOne', 'click', function () {
+        var id = $(this).data("id");
+        $("#delSensorSubmit").val(id);
+        $("#myModal-delete-sensor").modal('show');
+    });
+    //解绑传感器提交
+    $(document).delegate('#delSensorSubmit', 'click', function () {
+        var id = $(this).val();
 
+        $.ajax({
+            url: "/unbind_sensor/",
+            data: "parameter_id=" + id,
+            async: true,
+            type: "GET",
+            dataType: "json",
+            cache: false,    //不允许缓存
+            success: function (data) {
+                if (data.res == '传感器已解绑！') {
+                    alert(data.res);
+                    $('#deleteOneModal').modal('hide');
+                    window.location.reload();
+                }
+                else {
+                    alert(data.res);
+                }
+
+
+            },
+            error: function (data) {
+                alert("请求异常");
+            }
+        });
+    });
 });

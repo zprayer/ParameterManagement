@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.db.models import *
 from django.contrib.auth.models import User
 
 
@@ -74,8 +75,55 @@ class SensorInfo(models.Model):
     #wire_sum = models.IntegerField("线缆数量")
     #pin_define = models.CharField("针脚定义",max_length = 256)
 
+class AirbornNumberManager(models.Manager):
+    AN_dic = {}
+    def create_AN(self,type,aircraft_type,aircraft_num,index):
+        if(index):
+            self.AN_dic['index'] = index
+            #self.AN_dic['index_int'] = int(index)
+        else:
+            self.AN_dic['errors'] = 'Index is not define'
+
+        if(type =='sensor'):
+            self.AN_dic['ATA']='8712'
+        elif(type == 'box' or type == 'card'):
+            self.AN_dic['ATA']='8716'
+        else:
+            self.AN_dic['errors'] = self.AN_dic['errors'] + "\rEquipment's type is not define!"
+        if(aircraft_type == 'C919'):
+            self.AN_dic['aircraft_type'] = 'C'
+        elif(aircraft_type == 'ARJ21'):
+            self.AN_dic['aircraft_type'] = 'A'
+        else:
+            self.AN_dic['errors'] = self.AN_dic['errors'] + "\rEquipment's aircraft_type is not define!"
+        if(aircraft_num):
+            self.AN_dic['aircraft_num'] = aircraft_num[1:]
+        else:
+            self.AN_dic['errors'] = self.AN_dic['errors'] + "\rEquipment's aircraft_num is not define!"
+
+        self.AN_dic['number'] = self.AN_dic['ATA']+self.AN_dic['aircraft_type'] +self.AN_dic['index'] + self.AN_dic['aircraft_num']
+        airborn_num = self.create(**self.AN_dic)
+
+        return airborn_num
+
+
 class AirbornNumber(models.Model):
-    number = models.CharField("装机件号",max_length=16)
+    number = models.CharField("装机件号",max_length=16,null=True)
+    ATA = models.CharField("ATA章节号",max_length=4,null=True)
+    aircraft_type = models.CharField("飞机型号",max_length=1,null=True)
+    aircraft_num = models.CharField("飞机架机号",max_length=2,null=True)
+    index = models.CharField("流水号",max_length=3,null=True)
+    #index_int = models.IntegerField("流水号(int)",null=True)
+    objects = AirbornNumberManager()
+
+
+
+
+
+
+
+
+
 
 class PositionInfo(models.Model):
     pass

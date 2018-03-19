@@ -41,6 +41,21 @@ class BindSensor(View):
 
         return HttpResponse(json.dumps(ret),content_type='application/json')
 
+class UnBindSensor(View):
+    def get(self,request):
+        ret ={}
+        parameter_id = request.GET.get('parameter_id')
+        try:
+            parameter_instance = Parameter.objects.get(id = parameter_id)
+        except Parameter.DoesNotExist:
+            ret['res'] = '参数不存在，请刷新页面检查参数是否已被删除！'
+        else:
+            parameter_instance.sensor = None
+            parameter_instance.save()
+            ret['res'] = '传感器已解绑！'
+        return HttpResponse(json.dumps(ret),content_type='application/json')
+
+
 class SelectSensor(View):
     def get(self,request):
         search_term = request.GET.get('q')
@@ -137,8 +152,8 @@ class ParameterList(TemplateView):
 
 class ParameterListJson(BaseDatatableView):
     model = Parameter
-    columns = ['id','name','identifier','name_output','unit','system','responsibility','status','sensor.sensor_name','sensor.sensor_type']
-    order_columns =['id','name','identifier','name_output','unit','system','responsibility','status','sensor.sensor_name','sensor.sensor_type']
+    columns = ['id','name','identifier','name_output','unit','system','responsibility','status','sensor.id','sensor.sensor_name','sensor.sensor_type']
+    order_columns =['id','name','identifier','name_output','unit','system','responsibility','status','sensor.id','sensor.sensor_name','sensor.sensor_type']
     sensor_columns = ['sensor_type','sensor_name','weight','voltage','power','signal_range','signal_type','comment']
     max_display_length = 500
 #    def render_column(self,row,column):

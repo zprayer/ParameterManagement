@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <table class=" table table-striped table-bordered table-hover table-checkable order-column dataTable" id="parameterlist" role="grid" aria-describedby="parameterlist_info">
+                <table class=" table table-striped table-condensed table-bordered table-hover table-checkable order-column dataTable" id="parameterlist" role="grid" aria-describedby="parameterlist_info">
                         <thead>
                             <tr role="row">
                                 <th>
@@ -76,6 +76,7 @@
                                 <th>单位</th>
                                 <th>系统/专业</th>
                                 <th>负责方</th>
+                                <th>传感器序号</th>
                                 <th>传感器名称</th>
                                 <th>传感器型号</th>
                                 <th>参数状态</th>
@@ -450,5 +451,36 @@
                 </form>
             </div><!-- /.modal-content -->
         </div>
+    </div>
+    <!--解绑传感器页面开始-->
+    <div class="modal fade" id="myModal-delete-sensor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" > <!-- data-backdrop="static" 禁止点击弹框后面内容 -->
+        <form class="form-horizontal" role="form">
+            <div class="modal-dialog modal-sm " > <!-- modal-sm 小的  modal-lg 大的 -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            提示信息
+                        </h4>
+                    </div>
+                    <div class="modal-body" style="text-align: left;">
+                        <h5>您确定要解绑当前传感器类型吗？</h5>
+                    </div>
+                    <div class="modal-footer">
+                    <!--
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">取消
+                        </button>
+                         -->
+                        <button type="button" class="btn btn-primary" id="delSensorSubmit">
+                            确认
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </form>
     </div>
 {% endblock %}
