@@ -17,15 +17,15 @@ from django.conf.urls import url, include
 from django.contrib.staticfiles import views
 from django.contrib import admin
 from django.conf import settings
-import xadmin #添加xadmin模块
-from xadmin.plugins import xversion
+#import xadmin #添加xadmin模块
+#from xadmin.plugins import xversion
 
-xversion.register_models()
-xadmin.autodiscover()
+#xversion.register_models()
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^xadmin', include(xadmin.site.urls)),
+   # url(r'^xadmin', include(xadmin.site.urls)),
     url(r'', include('management.urls'))
 ]
 
