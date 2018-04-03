@@ -88,19 +88,26 @@ class AddSensor(View):
         ret = dict()
         ret['ok'] = '0'
         sensor_dic ={}
-        sensor_dic['sensor_type'] = request.GET.get('sensor_type',None)
-        sensor_dic['sensor_name']= request.GET.get('sensor_name',None)
-        sensor_dic['weight']= request.GET.get('weight',None)
+        sensor_dic['sensor_type']=par_sensor_type = request.GET.get('sensor_type',None)
+        sensor_dic['sensor_name']=par_sensor_name= request.GET.get('sensor_name',None)
+        sensor_dic['weight']= request.GET.get('weight',None)        
         sensor_dic['voltage']= request.GET.get('voltage',None)
-        sensor_dic['power']= request.GET.get('power',None)
+        sensor_dic['power']= request.GET.get('power',None)        
         sensor_dic['signal_range']=request.GET.get('signal_range',None)
         sensor_dic['signal_type']=request.GET.get('signal_type',None)
         sensor_dic['comment']=request.GET.get('comment',None)
-        sensornew = SensorInfo.objects.create_sensor(sensor_dic)
-        sensornew.save()
-        ret['ok'] = '1'
-        return HttpResponse(json.dumps(ret),content_type='application/json')
-
+        if((par_sensor_type=="")or(par_sensor_name=="")):
+            ret["check"]="必填项不能为空"
+            return HttpResponse(json.dumps(ret),content_type='application/json')
+        elif(len(list(SensorInfo.objects.filter(sensor_type = par_sensor_type)))>0):
+            ret["check"]="传感器型号已存在，请核对"
+            return HttpResponse(json.dumps(ret),content_type='application/json')
+        else:
+            sensornew = SensorInfo.objects.create_sensor(sensor_dic)
+            sensornew.save()
+            ret['check'] = 'ok'
+            return HttpResponse(json.dumps(ret),content_type='application/json')
+              
 class RequestSensor(View):
     def get(self,request):
         ret = dict()
@@ -136,6 +143,18 @@ class ModifySensor(View):
             ret['res'] = 'ok'
 
         return HttpResponse(json.dumps(ret),content_type="application/json")
+    
+class ChangeSensorPermission(View):
+    #@permission_required('management.change_parameter')
+    def get(self,request):
+        user = request.user if request.user.is_authenticated() else None
+        ret = {}
+        if user.has_perm('management.change_sensor'):
+            ret['permisson']='true'
+        else:
+            ret['permisson']='false'
+        return HttpResponse(json.dumps(ret),content_type="application/json")
+
 
 class DeleteSensor(View):
     def get(self,request):
@@ -145,6 +164,17 @@ class DeleteSensor(View):
         ret['ok'] = '1'
         return HttpResponse(json.dumps(ret),content_type='application/json')
 
+
+class DeleteSensorPermission(View):
+    #@permission_required('management.delete_sensor')
+    def get(self,request):
+        user = request.user if request.user.is_authenticated() else None
+        ret = {}
+        if user.has_perm('management.delete_sensor'):
+            ret['permisson']='true'
+        else:
+            ret['permisson']='false'
+        return HttpResponse(json.dumps(ret),content_type="application/json")
 
 
 class ParameterList(TemplateView):
@@ -186,32 +216,50 @@ class DeleteParameter(View):
         ret['ok'] = '1'
         return HttpResponse(json.dumps(ret),content_type='application/json')
 
+class DeleteParameterPermission(View):
+    #@permission_required('management.delete_parameter')
+    def get(self,request):
+        user = request.user if request.user.is_authenticated() else None
+        ret = {}
+        if user.has_perm('management.delete_parameter'):
+            ret['permisson']='true'
+        else:
+            ret['permisson']='false'
+        return HttpResponse(json.dumps(ret),content_type="application/json")
+
 class AddParameter(View):
     def get(self,request):
         ret = dict()
-        ret['ok'] = '0'
+        ret["check"]=''
         par_dic ={}
         aircraftinfo_id = request.GET.get('aircraftinfo_id',None)
-        par_dic['name'] = request.GET.get('name',None)
-        par_dic['identifier']= request.GET.get('identifier',None)
-        par_dic['name_output']= request.GET.get('name_output',None)
-        par_dic['range_min']= request.GET.get('range_min',None)
-        par_dic['range_max']= request.GET.get('range_max',None)
+        par_dic['name']=par_name = request.GET.get('name',None)
+        par_dic['identifier']=par_identifier= request.GET.get('identifier',None)
+        par_dic['name_output']=par_name_output= request.GET.get('name_output',None)
+        par_dic['range_min']=par_range_min= request.GET.get('range_min',None)
+        par_dic['range_max']= par_range_max= request.GET.get('range_max',None)                   
         par_dic['unit']=request.GET.get('unit',None)
-        par_dic['accuracy']=request.GET.get('accuracy',None)
-        par_dic['samplerate']=request.GET.get('samplerate',None)
+        par_dic['accuracy']=par_accuracy= request.GET.get('accuracy',None)
+        par_dic['samplerate']=par_samplerate=  request.GET.get('samplerate',None)                   
+        par_dic['unit']=request.GET.get('unit',None)
         par_dic['type']=request.GET.get('type',None)
         par_dic['source']=request.GET.get('source',None)
         par_dic['ground_monitor']=request.GET.get('ground_monitor',None)
         par_dic['airborne_monitor']=request.GET.get('airborne_monitor',None)
         par_dic['system']=request.GET.get('system',None)
         par_dic['responsibility']=request.GET.get('responsibility',None)
-        #parnew = Parameter.objects.create(**par_dic)
-        parnew = Parameter.objects.create_parameter(par_dic,aircraftinfo_id)
-        parnew.save()
-        ret['ok'] = '1'
-        return HttpResponse(json.dumps(ret),content_type='application/json')
-
+        if((par_name=="")or(par_identifier=="")or(par_name_output=="")):
+            ret["check"]="必填项不能为空"
+            return HttpResponse(json.dumps(ret),content_type='application/json')
+        elif(len(list(Parameter.objects.filter(name = par_name)))>0):
+            ret["check"]="参数已存在，请核对"
+            return HttpResponse(json.dumps(ret),content_type='application/json')
+        else:
+            parnew = Parameter.objects.create_parameter(par_dic,aircraftinfo_id)
+            parnew.save()
+            ret['check'] = 'ok'
+            return HttpResponse(json.dumps(ret),content_type='application/json')
+    
 class RequestParameter(View):
     def get(self,request):
         ret = dict()
@@ -252,6 +300,18 @@ class ModifyParameter(View):
             ret['res'] = 'ok'
 
         return HttpResponse(json.dumps(ret),content_type="application/json")
+
+class ChangeParameterPermission(View):
+    #@permission_required('management.change_parameter')
+    def get(self,request):
+        user = request.user if request.user.is_authenticated() else None
+        ret = {}
+        if user.has_perm('management.change_parameter'):
+            ret['permisson']='true'
+        else:
+            ret['permisson']='false'
+        return HttpResponse(json.dumps(ret),content_type="application/json")
+
 
 class ParameterListEntry(View):
     def get(self,request):
@@ -356,7 +416,7 @@ def login(request):
         else:
             state = 'not_exist_or_password_error'
     content = {
-        'active_menu': 'homepage',
+       # 'active_menu': 'homepage',
         'state': state,
         'user': None
     }
@@ -389,7 +449,7 @@ def set_password(request):
             state = 'password_error'
     content = {
         'user': user,
-        'active_menu': 'homepage',
+       'active_menu': 'homepage',
         'state': state,
     }
     return render(request, 'management/set_password.html', content)

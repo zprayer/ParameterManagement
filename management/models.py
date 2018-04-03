@@ -58,9 +58,9 @@ class SensorInfoManager(models.Manager):
 class SensorInfo(models.Model):
     sensor_type = models.CharField("型号",max_length = 32)
     sensor_name = models.CharField("传感器名称",max_length = 32)
-    weight = models.IntegerField("重量")
+    weight = models.CharField("重量",max_length=16)
     voltage = models.CharField("供电要求",max_length = 32)
-    power = models.IntegerField("功耗")
+    power = models.CharField("功耗",max_length=16)
     signal_range = models.CharField("输出信号范围",max_length=16)
     signal_type = models.CharField("输出信号类型",max_length = 32)
     comment = models.CharField("备注",max_length= 64,null=True)
@@ -74,7 +74,9 @@ class SensorInfo(models.Model):
     #wire_zhi = models.CharField("线制",max_length = 16)
     #wire_sum = models.IntegerField("线缆数量")
     #pin_define = models.CharField("针脚定义",max_length = 256)
-
+    class Meta:
+        verbose_name = '传感器'
+        verbose_name_plural = '传感器'
 class AirbornNumberManager(models.Manager):
     AN_dic = {}
     def create_AN(self,type,aircraft_type,aircraft_num,index):
@@ -154,11 +156,11 @@ class Parameter(models.Model):
     name = models.CharField("参数名称",max_length = 64)
     identifier = models.CharField("参数符号",max_length = 64)
     name_output = models.CharField("输出符号",max_length = 64)
-    range_min = models.FloatField("量程最小值",blank = True,null = True)
-    range_max = models.FloatField("量程最大值",blank = True,null = True)
+    range_min = models.CharField("量程最小值",blank = True,null = True,max_length = 64)
+    range_max = models.CharField("量程最大值",blank = True,null = True,max_length = 64)
     unit = models.CharField("单位",max_length = 8,blank = True)
     accuracy = models.CharField("精度",blank = True,max_length = 64)
-    samplerate = models.IntegerField("采样率",blank = False)
+    samplerate = models.CharField("采样率",blank = True,max_length = 64)
     type = models.CharField("参数类型",max_length = 8,choices = TYPE_CHOICES)
     source = models.CharField("参数来源",max_length = 8,choices = SOURCE_CHOICES)
     ground_monitor = models.CharField("地面监控",max_length = 8,null = True)
@@ -173,7 +175,9 @@ class Parameter(models.Model):
     aircraftinfo = models.ForeignKey('AircraftInfo',null=True)
     status = models.CharField("参数状态",max_length= 20,choices=PARAMETERSTATUS,default="request_validating")
     objects = ParameterManager()
-
+    class Meta:
+        verbose_name = '模拟量参数'
+        verbose_name_plural = '模拟量参数'
 
 
 

@@ -56,14 +56,14 @@ License: You must have a valid license purchased only from themeforest(the above
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
         <!-- BEGIN HEADER -->
         <div class="page-header navbar navbar-fixed-top">
-            <!-- BEGIN HEADER INNER -->
+            <!-- BEGIN HEADER INNER  -default -->
             <div class="page-header-inner ">
                 <!-- BEGIN LOGO -->
-                <div class="page-logo">
+                <div class="page-logo" style="background-color:white" >
                     <a href="{% url 'homepage' %}">
-                        <img src="{% static 'metronic/layouts/layout2/img/logo-default.png'%}" alt="logo" class="logo-default" /> </a>
+                        <img src="{% static 'metronic/layouts/layout2/img/2.jpg'%}" alt="logo" class="logo"  style="left:0px; top:0px;" /> </a>
                     <div class="menu-toggler sidebar-toggler">
-                        <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header  -->
                     </div>
                 </div>
                 <!-- END LOGO -->
@@ -111,7 +111,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li class="dropdown dropdown-user" id = "header_user_bar">
                             {% if user %}
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <span class="username username-hide-on-mobile" id="base_name"> {{ user}} </span>
+                                <span class="username username-hide-on-mobile" id="base_name">测试部 {{user.first_name}} </span>
                                 <i class="fa fa-angle-down"></i>
                                 </a>
                                     <ul class="dropdown-menu dropdown-menu-default">
@@ -143,7 +143,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
+                                                <a href="{% url 'signup' %}">
                                                     <i class="icon-note"></i> 注册
                                                 </a>
                                             </li>

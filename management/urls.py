@@ -19,6 +19,11 @@ urlpatterns = [
     url(r'^parameterlist_entry/$', views.ParameterListEntry.as_view(), name='parameterlist_entry'),
     url(r'^add_aircraftinfo/$', views.AddAircraftInfo.as_view(), name='add_aircraftinfo'),
 
+    url(r'^change_parameter_permission/$', views.ChangeParameterPermission.as_view(), name='change_parameter_permission'),
+    url(r'^delete_parameter_permission/$', views.DeleteParameterPermission.as_view(), name='delete_parameter_permission'),
+    url(r'^change_sensor_permission/$', views.ChangeSensorPermission.as_view(), name='change_sensor_permission'),
+    url(r'^delete_sensor_permission/$', views.DeleteSensorPermission.as_view(), name='delete_sensor_permission'),
+    
     url(r'^sensor_list_json/$', views.SensorListJson.as_view(), name='sensor_list_json'),
     url(r'^view_sensorinfo_list/$', views.SensorList.as_view(), name='view_sensor_list'),
     url(r'^request_sensor_info/$', views.RequestSensor.as_view(), name='request_sensor_info'),

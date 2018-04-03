@@ -1,7 +1,8 @@
 $(function() {
     var dt_table;
     dt_table = $('#parameterlist').dataTable({
-        ordering: false,
+        dom:'lBfrtip',
+		ordering: false,
         bDeferRender: true,
         bFilter: true,
         bStateSave: true,
@@ -9,6 +10,43 @@ $(function() {
         pagingType: "bootstrap_full_number",
         lengthMenu: [[5, 10, 20,-1], [5, 10, 20,'All']],
         iDisplayLength: 10,
+		buttons: [  
+           {
+               extend: 'collection',
+               text: ' 导出工具 ',
+			   className:'fa fa-angle-down',
+			   width:'200',
+			   style:"background-color:blue",
+				
+               buttons: [
+			  // */
+				 
+				// {
+				//	'extend': 'colvis', 
+					
+				//},  */
+				{  
+            'extend': 'print',  
+            'text': '  打印',
+            'className':"fa fa-print",//按钮的class名称
+				},
+                 {  
+            'extend': 'excel',  
+            'text': '  保存为excel',
+			'title':'模拟量参数',
+            'className':'fa fa-file-excel-o',//按钮的class名称
+				} , 
+                 {  
+            'extend': 'pdf',  
+            'text': '  保存为pdf',
+			'title':'模拟量参数',
+            'className':'fa fa-file-pdf-o',//按钮的class名称 btn green  btn-outline
+				}   
+                    
+               ]
+            }
+	   
+	    ],
         //dom: "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
         oLanguage: {
             sProcessing: "正在获取数据，请稍后...",
@@ -280,11 +318,32 @@ $(function() {
 
     //按钮事件触发
     //编辑参数
+	//模拟量参数修改权限控制
     $(document).delegate('#RquestModifyOne', 'click', function () {
         var id = $(this).data("id");
-        $('#modifyBtnSubmit').val(id);
-        $('#myModal-modify-info').modal('show');
-
+        //$('#modifyBtnSubmit').val(id);
+        // $('#myModal-modify-info').modal('show');
+        $.ajax({
+            url:"/change_parameter_permission/",
+            data:$('#RquestModifyOne').data("id"),
+            cache: false,
+            type: "GET",
+            dataType: "json",
+            async: true,
+            success:function(data){
+                if (data.permisson == 'true')
+                {
+                  
+                   $('#modifyBtnSubmit').val(id);
+                   $('#myModal-modify-info').modal('show');
+                }
+				else 
+					alert("没有修改模拟量权限！")
+			},
+            error:function(){
+                alert("请求异常！");
+            } 
+			});
     });
     //监听编辑模态框弹出事件
     $('#myModal-modify-info').on('show.bs.modal', function () {
@@ -358,6 +417,7 @@ $(function() {
         $('#myModal-add-info').modal('show');
     });
     //提交新增参数请求
+	//表单验证
     $(document).delegate('#addBtnSubmit', 'click', function () {
         var id = $(this).val();
 
@@ -369,25 +429,69 @@ $(function() {
             dataType: "json",
             async: true,
             success: function (data) {
-                if (data.ok == "1")
+                if (data.check == "必填项不能为空")
                 {
-                    $('#myModal-add-info').modal('hide');
-                    window.location.reload();
+					
+					$('#alert-danger-2').attr('class', 'alert alert-danger display-hide');
+					$('#alert-danger-1').attr('class', 'alert alert-danger');
+					
+					alert("必填项不能为空");
+                    /* $('#myModal-add-info').modal('hide');
+                    window.location.reload(); */
                 }
-                else
-                    alert(data);
+                else if (data.check == "参数已存在，请核对")
+				{	
+			        $('#alert-danger-1').attr('class', 'alert alert-danger display-hide');
+                    $('#alert-danger-2').attr('class', 'alert alert-danger');
+                    alert("参数已存在，请核对");
+					$('#myModal-add-info').modal('show');
+				}
+				else
+				{
+					alert("添加成功");
+					$('#alert-success').attr('class', 'alert-success');
+                    $('#myModal-add-info').modal('hide');
+                    window.location.reload(); 
+                }
+					
             },
             error: function (data) {
                 alert("请求异常！");
             }
         });
     });
+	
+	
     // 删除按钮模态框触发
+	//模拟量参数删除权限控制
     $(document).delegate('#RquestDeleteOne', 'click', function () {
         var id = $(this).data("id");//获取删除按钮中的data-id的值
         console.log(id);
-        $("#delSubmit").val(id);//赋值给删除确认按钮
-        $("#deleteOneModal").modal('show');
+       // $("#delSubmit").val(id);//赋值给删除确认按钮
+        //$("#deleteOneModal").modal('show');
+		$.ajax({
+            url:"/delete_parameter_permission/",
+            data:$('#RquestModifyOne').data("id"),
+            cache: false,
+            type: "GET",
+            dataType: "json",
+            async: true,
+            success:function(data){
+                if (data.permisson == 'true')
+                {
+                  
+                    $("#delSubmit").val(id);//赋值给删除确认按钮
+                    $("#deleteOneModal").modal('show');
+                }
+				else {
+					alert("没有删除模拟量权限！");
+				   // $("#deleteOneModal").modal('hide');
+				}
+			},
+            error:function(){
+                alert("请求异常！")
+            } 
+			});
     });
     //提交删除请求
     $(document).delegate('#delSubmit', 'click', function () {
