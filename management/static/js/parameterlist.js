@@ -521,12 +521,35 @@ $(function() {
         });
     });
     //绑定传感器触发
+	///绑定传感器权限控制
     $(document).delegate('#SensorModifyOne', 'click', function () {
         var id = $(this).data("id");
         console.log(id);
-        $("#modifySensorBtnSubmit").val(id);
-        console.log('btnsubmit:' + id)
-        $("#myModal-modify-sensor").modal('show');
+       // $("#modifySensorBtnSubmit").val(id);
+        //console.log('btnsubmit:' + id)
+        //$("#myModal-modify-sensor").modal('show');
+		  $.ajax({
+            url:"/change_sensor_permission/",
+            data:$('#RquestModifyOne').data("id"),
+            cache: false,
+            type: "GET",
+            dataType: "json",
+            async: true,
+            success:function(data){
+                if (data.permisson == 'true')
+                {
+                  
+                     $("#modifySensorBtnSubmit").val(id);
+                     console.log('btnsubmit:' + id);
+                     $("#myModal-modify-sensor").modal('show');
+                }
+				else 
+					alert("没有绑定传感器权限！")
+			},
+             error:function(){
+                alert("请求异常！")
+            } 
+			});
     });
     //绑定传感器
     $(document).delegate('#modifySensorBtnSubmit','click',function(){
@@ -559,10 +582,32 @@ $(function() {
         });
     });
     //解绑传感器触发
+	//解绑传感器权限控制
     $(document).delegate('#SensorDeleteOne', 'click', function () {
         var id = $(this).data("id");
-        $("#delSensorSubmit").val(id);
-        $("#myModal-delete-sensor").modal('show');
+       // $("#delSensorSubmit").val(id);
+       // $("#myModal-delete-sensor").modal('show');
+		$.ajax({
+            url:"/change_sensor_permission/",
+            data:$('#RquestModifyOne').data("id"),
+            cache: false,
+            type: "GET",
+            dataType: "json",
+            async: true,
+            success:function(data){
+                if (data.permisson == 'true')
+                {
+                  
+                  $("#delSensorSubmit").val(id);
+                  $("#myModal-delete-sensor").modal('show');
+                }
+				else 
+					alert("没有删除传感器权限！")
+			},
+            error:function(){
+                alert("请求异常！")
+            } 
+			});
     });
     //解绑传感器提交
     $(document).delegate('#delSensorSubmit', 'click', function () {

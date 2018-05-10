@@ -33,5 +33,5 @@ urlpatterns = [
     url(r'^select_sensor/$',views.SelectSensor.as_view(),name='select_sensor'),
     url(r'^bind_sensor/$',views.BindSensor.as_view(),name='bind_sensor'),
     url(r'^unbind_sensor/$',views.UnBindSensor.as_view(),name='unbind_sensor'),
-
+  url(r'^statistics_parameter/$',views.StatisticsParameter.as_view(),name='statistics_parameter'),
 ]

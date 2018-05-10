@@ -15,7 +15,16 @@ import json
 from  django.forms.models import model_to_dict
 from .myserializers import *
 
-
+class StatisticsParameter(View):
+     def get(self,request):
+        ret = dict()
+        ret['ok'] = '0'
+        user_count=User.objects.all().count()
+        sensor_count=SensorInfo.objects.all().count()
+        parameter_count=Parameter.objects.all().count()
+        ret['sensor_count']=sensor_count
+        ret['parameter_count']=parameter_count
+        return HttpResponse(json.dumps(ret),content_type='application/json')
 class BindSensor(View):
     def get(self,request):
         ret = {}
@@ -366,7 +375,7 @@ class AddAircraftInfo(View):
 def index(request):
     user = request.user if request.user.is_authenticated() else None
     content = {
-        'active_menu': 'homepage',
+   #     'active_menu': 'homepage',
         'user': user,
     }
     return render(request, 'management/index.html', content)
@@ -409,12 +418,15 @@ def login(request):
     if request.method == 'POST':
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            return HttpResponseRedirect(reverse('homepage'))
+        if password == '' or username == '':
+             state='empty'
         else:
-            state = 'not_exist_or_password_error'
+             user = auth.authenticate(username=username, password=password)
+             if user is not None:
+                 auth.login(request, user)
+                 return HttpResponseRedirect(reverse('homepage')) 
+             else:
+                 state = 'not_exist_or_password_error'                 
     content = {
        # 'active_menu': 'homepage',
         'state': state,
@@ -445,13 +457,14 @@ def set_password(request):
                 user.set_password(new_password)
                 user.save()
                 state = 'success'
+                return HttpResponseRedirect(reverse('login'))
         else:
             state = 'password_error'
     content = {
-        'user': user,
-       'active_menu': 'homepage',
-        'state': state,
-    }
+                'user': user,
+                'active_menu': 'homepage',
+                'state': state,
+             }
     return render(request, 'management/set_password.html', content)
 
 

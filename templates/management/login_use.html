@@ -53,29 +53,20 @@ License: You must have a valid license purchased only from themeforest(the above
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
-                <img src="../assets/pages/img/logo-big.png" alt="" /> </a>
+            <a href="">
+                <!-- <img src="{% static 'metronic/pages/img/11.gif' %}"alt="" /> </a> -->
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
         <div class="content">
             <!-- BEGIN LOGIN FORM -->
-            <form class="login-form" action="" method="post">
+            <form class="login-form"  method="post">
 			{% csrf_token %}
-                <h3 class="form-title">欢迎登录测试参数管理系统</h3>
+                <h3 class="form-title" style="text-align:center;">欢迎登录测试参数管理系统</h3>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>
                     <span> 输入用户名和密码. </span>
                 </div>
-				{% if state == 'not_exist_or_password_error' %}
-                    <!-- <div class="well">
-                        <h2 class="text-danger text-center">密码错误</h2>
-                    </div> -->
-					<div class="alert alert-danger display">
-                    <button class="close" data-close="alert"></button>
-                    <span> 用户名和密码错误</span>
-                </div>
-				{% endif %}
                 <div class="form-group">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label class="control-label visible-ie8 visible-ie9">Username</label>
@@ -91,15 +82,16 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                <!--  <div class="form-actions">
                     <label class="rememberme mt-checkbox mt-checkbox-outline">
-                        <input type="checkbox" name="remember" value="1" /> Remember me
+                        <input type="checkbox" name="remember" value="1" /> 记住密码
                         <span></span>
                     </label>
-                    <button type="submit" class="btn green pull-right"> Login </button>
-                </div> -->
+                    <button type="submit" class="btn green pull-right"> 登录 </button>
+					/div>
+                < -->
 				<div class="form-actions">
                     <button type="submit" class="btn green btn-block uppercase">登录 </button>
                 </div>
-               <!--  <div class="login-options">
+         <!--        <div class="login-options">
                     <h4>Or login with</h4>
                     <ul class="social-icons">
                         <li>
@@ -451,7 +443,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
         <!-- END LOGIN -->
         <!-- BEGIN COPYRIGHT -->
-        <div class="copyright">  2018 Copyright &copy; Comac - Test. </div>
+        <div class="copyright"> 2018 Copyright &copy; Comac - Test. </div>
         <!-- END COPYRIGHT -->
         <!--[if lt IE 9]>
 <script src="../assets/global/plugins/respond.min.js"></script>
@@ -459,7 +451,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="../assets/global/plugins/ie8.fix.min.js"></script> 
 <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
-         <!-- BEGIN CORE PLUGINS -->
         <script src="{% static 'metronic/global/plugins/jquery.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'metronic/global/plugins/bootstrap/js/bootstrap.min.js' %}" type="text/javascript"></script>
         <script src="{% static 'metronic/global/plugins/js.cookie.min.js' %}" type="text/javascript"></script>
@@ -478,7 +469,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
         <script src="{% static 'metronic/pages/scripts/login-4.min.js' %}" type="text/javascript"></script>
-		<!-- END PAGE LEVEL SCRIPTS -->
+        <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <!-- END THEME LAYOUT SCRIPTS -->
         <script>

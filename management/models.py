@@ -144,6 +144,8 @@ class AircraftInfo(models.Model):
     aircraft_number = models.CharField("架机号", max_length=5)
     class Meta:
         unique_together = (('aircraft_model', 'aircraft_number'),)
+        verbose_name = '架机型号'
+        verbose_name_plural = '架机型号'
 
 class ParameterManager(models.Manager):
     def create_parameter(self,pardic,aircraft_id):

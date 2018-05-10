@@ -29,5 +29,5 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Parameter, ParameterAdmin)
 admin.site.register(SensorInfo, SensorInfoAdmin)
 #admin.site.register(ComacUser,UserAdmin)
-admin.site.site_header = '参数后台管理'
+admin.site.site_header = '   '
 admin.site.site_title = '参数管理系统'

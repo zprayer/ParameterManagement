@@ -1,0 +1,32 @@
+#bar-chart{
+    
+    width: 1000px;
+    height: 350px;
+    font-family: Lato, Helvetica-Neue, monospace;
+}
+/* #bar-canvas{
+    position: absolute;
+    top: 75px;
+    left: 0px;
+} */
+.used {
+  display: block;
+  width: 200px;
+  border-left: 20px solid #be1e2d;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+}
+
+.unused {
+  display: block;
+  width: 200px;
+  border-left: 20px solid #00a79d;
+  padding: 2px 5px;
+  margin-bottom: 2px;
+}
+.key {
+  width: 200px;
+  margin-left: 1000px;
+}
+
+
