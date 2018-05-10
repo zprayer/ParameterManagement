@@ -22,7 +22,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
         <meta charset="utf-8" />
-        <title>测试参数管理平台</title>
+        <!-- <title>测试参数管理平台</title> -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #2 for statistics, charts, recent events and reports" name="description" />
@@ -55,66 +55,41 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
         <!-- BEGIN HEADER -->
+		<!-- <img src="{% static 'metronic/layouts/layout2/img/1.jpg'%}"  style="width:200px;left:0px;right:0px; top:0px;" /> -->
         <div class="page-header navbar navbar-fixed-top">
-            <!-- BEGIN HEADER INNER -->
-            <div class="page-header-inner ">
-                <!-- BEGIN LOGO -->
-                <div class="page-logo">
+            <!-- BEGIN HEADER INNER  -default -->
+			<!-- <img src="{% static 'metronic/layouts/layout2/img/1.jpg'%}"  style="width:200px;left:0px;right:0px; top:0px;" />  -->
+            <div class="page-header-inner " ></>
+               <!-- <img src="{% static 'metronic/layouts/layout2/img/1.jpg'%}"  style="width:20px;left:0px;right:0px; top:0px;" /> -->
+			   <!-- BEGIN LOGO -->
+                <div class="page-logo" style="background-color:white" >
                     <a href="{% url 'homepage' %}">
-                        <img src="{% static 'metronic/layouts/layout2/img/logo-default.png'%}" alt="logo" class="logo-default" /> </a>
+                        <img src="{% static 'metronic/layouts/layout2/img/2.jpg'%}" alt="logo" class="logo"  style="left:0px; top:0px;" /> </a>
                     <div class="menu-toggler sidebar-toggler">
-                        <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header  -->
                     </div>
                 </div>
                 <!-- END LOGO -->
-                <div class="page-top">
+                <div class="page-top" style="background-color:white">
                     <div class="top-menu">
                         <ul class="nav navbar-nav pull-right">
                             <!-- BEGIN NOTIFICATION DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class below "dropdown-extended" to change the dropdown styte -->
                             <!-- DOC: Apply "dropdown-hoverable" class after below "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
                             <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
-                            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <i class="icon-bell"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="external">
-                                        <h3>
-                                            <span class="bold">12 pending</span> notifications</h3>
-                                        <a href="">view all</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- END NOTIFICATION DROPDOWN -->
-                            <!-- BEGIN INBOX DROPDOWN -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            <!-- END INBOX DROPDOWN -->
-                            <!-- BEGIN TODO DROPDOWN -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <i class="icon-calendar"></i>
-                                </a>
-                                <ul class="dropdown-menu extended tasks">
-                                    <li class="external">
-                                        <h3>You have
-                                            <span class="bold">12 pending</span> tasks</h3>
-                                        <a href="">view all</a>
-                                    </li>
-                                </ul>
-                            </li>
+                         
                             <!-- END TODO DROPDOWN -->
                             <!-- BEGIN USER LOGIN DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 
-                            <li class="dropdown dropdown-user" id = "header_user_bar">
+                            <li class="dropdown dropdown-extended dropdown-notification" id = "header_user_bar">
                             {% if user %}
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <span class="username username-hide-on-mobile" id="base_name"> {{ user}} </span>
-                                <i class="fa fa-angle-down"></i>
+                                <!-- <span class="username username-hide-on-mobile" id="base_name">测试部 {{user.first_name}} </span> -->
+								<span class="username username-hide-on-mobile" id="base_name">欢迎您：测试部，{{user.last_name}}{{user.first_name}} </span>
+                                <!-- <i class="fa fa-angle-down"></i> -->
                                 </a>
-                                    <ul class="dropdown-menu dropdown-menu-default">
+                                   <!--  <ul class="dropdown-menu dropdown-menu-default">
                                         <li>
                                             <a href="">
                                                 <i class="icon-user"></i> My Profile </a>
@@ -127,35 +102,55 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <li class="divider"> </li>
                                         <li>
                                             <a href="{% url 'logout' %}">
-                                                <i class="icon-key"></i> Log Out </a>
+                                                <i class="icon-key"></i> 退出 </a>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                             {% else %}
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <a href="{% url 'login' %}" class="dropdown-toggle" >
                                 <i class="icon-user"></i>
-                                <span class="username username-hide-on-mobile" id="base_name">登陆</span>
-                                <i class="fa fa-angle-down"></i>
+                               登陆
+                                <!-- <i class="fa fa-angle-down"></i> -->
                                 </a>
-                                    <ul class="dropdown-menu dropdown-menu-default">
+                                   <!--  <ul class="dropdown-menu dropdown-menu-default">
                                             <li>
                                                 <a href="{% url 'login' %}">
                                                     <i class="icon-login"></i> 登陆
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
+                                                <a href="{% url 'signup' %}">
                                                     <i class="icon-note"></i> 注册
                                                 </a>
                                             </li>
-                                    </ul>
+                                    </ul> -->
                             {% endif %}
+                            </li>
+							
+							
+							   <li class="dropdown dropdown-extended dropdown-notification" >
+                                <a href="{% url 'set_password'%}" class="dropdown-toggle" id="change-btn" >
+                                <i class="fa fa-pencil"></i>  修改密码 <!-- <i class="icon-bell"></i> -->
+                                </a>
+                               
+                            </li>
+                            <!-- END NOTIFICATION DROPDOWN -->
+                            <!-- BEGIN INBOX DROPDOWN -->
+                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                            <!-- END INBOX DROPDOWN -->
+                            <!-- BEGIN TODO DROPDOWN -->
+                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                            <li class="dropdown dropdown-extended dropdown-notification" id="header_task_bar">
+                                <a href="{% url 'logout' %}" class="dropdown-toggle" >
+                                  <i class="icon-logout"></i>  退出系统<!-- <i class="icon-calendar"></i> -->
+                                </a>
+                               
                             </li>
                             <!-- END USER LOGIN DROPDOWN -->
                             <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-extended quick-sidebar-toggler">
                                 <span class="sr-only">Toggle Quick Sidebar</span>
-                                <i class="icon-logout"></i>
+                                <!-- <i class="icon-logout"></i> -->
                             </li>
                             <!-- END QUICK SIDEBAR TOGGLER -->
                         </ul>
@@ -172,7 +167,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="clearfix"> </div>
         <!-- END HEADER & CONTENT DIVIDER -->
         <!-- BEGIN CONTAINER -->
-        <div class="page-container">
+       <!--  <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+             <div class="page-container">
             <!-- BEGIN SIDEBAR -->
             <div class="page-sidebar-wrapper">
                 <!-- END SIDEBAR -->
@@ -838,9 +835,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <div class="page-footer">
-            <div class="page-footer-inner"> 2016 &copy; Metronic Theme By
-                <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
-                <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
+            <div class="page-footer-inner"><h5 class="text-center"> 2018 &copy; COMAC●TEST 测试工程部</h5>
+               <!--  <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
+                <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/402 -->
                 <div class="scroll-to-top">
                     <i class="icon-arrow-up"></i>
                 </div>
@@ -880,6 +877,78 @@ License: You must have a valid license purchased only from themeforest(the above
                 <span aria-hidden="true" class="quick-nav-bg"></span>
             </nav>
             <div class="quick-nav-overlay"></div>
+			
+			
+			 <!--新增页面开始-->
+    <div class="modal fade" id="myModal-change-password-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" id="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h1 class="modal-title text-center" id="myModalLabel">修改密码</h1>
+                </div>
+               <form id="addParForm" role="form" class="form-horizontal" >
+                    <div class="alert alert-danger display-hide" id="alert-danger-1" higher="200">
+                            <button class="close" id ="alert_button" data-dismiss="alert"></button> <h1  id="text"align="center">必填项不能为空</h1></div>
+                   
+					<div class="alert alert-danger display-hide" id="alert-danger-2" higher="200">
+                            <button class="close" id ="alert_button" data-dismiss="alert"></button> <h1  id="text"align="center">参数已存在，请核对</h1></div>
+                    <div class="alert alert-success display-hide" id="alert-success">
+                        <button class="close" data-close="alert"></button> 添加成功 </div>
+						<div class="alert alert-danger display-hide alert-dismissable" id="alert-danger-3>
+	                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+	                     	&times;
+	                         </button>
+	                        错误！请进行一些更改。
+                                 </div>
+                    <div class="form-group">
+                        <label for="add_name" class="col-md-3 control-label">原密码
+						<span class="required">*</span>
+						</label>
+                        <div class="col-md-8">
+						    <div class="input-icon right">
+                            <i class="fa"></i>
+                            <input type="text" class="form-control" id="add_name" maxlength="64" required="true" name="name" > 
+							</div>
+						</div>
+						
+						
+						
+                    </div>
+
+                    <div class="form-group">
+                        <label for="add_identifier" class="col-md-3 control-label">新密码
+						<span class="required"> * </span>
+						</label>
+                        <div class="col-md-8">
+						     <div class="input-icon right">
+                             <i class="fa"></i>
+						    <input type="text" class="form-control"  maxlength="64" required name="identifier" id="add_identifier"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="add_name_output" class="col-md-3 control-label">确认新密码
+						<span class="required"> * </span>
+						</label>
+                        <div class="col-md-8">
+						    <div class="input-icon right">
+                             <i class="fa"></i>
+
+                            <input type="text" class="form-control" maxlength="64"required name="name_output" id="add_name_output"></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-default" >重置</button>
+                        <button type="submit" class="btn btn-primary" id="addBtnSubmit">提交</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
             <!-- END QUICK NAV -->
             <!--[if lt IE 9]>
             <script src="{% static 'metronic/global/plugins/respond.min.js' %}"></script>
@@ -899,6 +968,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <script type="text/javascript" src="{% static 'metronic/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js' %}"></script>
             <script type="text/javascript" src="{% static 'metronic/global/plugins/morris/morris.min.js' %}"></script>
             <script type="text/javascript" src="{% static 'metronic/global/plugins/morris/raphael-min.js' %}"></script>
+			 
             <!-- END PAGE LEVEL PLUGINS -->
             <!-- BEGIN THEME GLOBAL SCRIPTS -->
             <script type="text/javascript" src="{% static 'metronic/global/scripts/app.min.js' %}"></script>
@@ -911,6 +981,14 @@ License: You must have a valid license purchased only from themeforest(the above
             <script type="text/javascript" src="{% static 'metronic/layouts/layout2/scripts/demo.min.js' %}"></script>
             <script type="text/javascript" src="{% static 'metronic/layouts/global/scripts/quick-sidebar.min.js' %}"></script>
             <script type="text/javascript" src="{% static 'metronic/layouts/global/scripts/quick-nav.min.js' %}"></script>
+			
+     
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+   
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+       	<script type="text/javascript" src="{% static 'js/change-password.js' %}"></script>
             <!-- END THEME LAYOUT SCRIPTS -->
             {% block extrajs %}{% endblock %}
             <script>
@@ -920,8 +998,24 @@ License: You must have a valid license purchased only from themeforest(the above
                     {
                         $('#radio1003').attr('checked', 'checked');
                     });
+					
+			<!-- 		 $(document).delegate('#RquestModifyOne', 'click', function () {
+        //var id = $(this).data("id");
+        //$('#modifyBtnSubmit').val(id);
+        // $('#myModal-modify-info').modal('show');
+     
+    //}); -->
+	 
                 })
+				
             </script>
+			<!-- <script>
+			 $(document).delegate('#change-btn', 'click', function () {
+       // var aircraftinfo_id = $('#aircraftinfo').data('aircraftinfo_id');
+       // $('#addBtnSubmit').val(aircraftinfo_id);
+        $('#myModal-change-password-info').modal('show');
+    });
+	</script> -->
     </body>
 
 </html>

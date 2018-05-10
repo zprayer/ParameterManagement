@@ -1,7 +1,8 @@
 $(function() {
     var dt_table;
     dt_table = $('#sensorlist').dataTable({
-        ordering: false,
+        dom:'lBfrtip',
+		ordering: false,
         bDeferRender: true,
         bFilter: true,
         bStateSave: true,
@@ -9,6 +10,44 @@ $(function() {
         pagingType: "bootstrap_full_number",
         lengthMenu: [[5, 10, 20,-1], [5, 10, 20,'All']],
         iDisplayLength: 10,
+		buttons: 
+        [
+		 {
+               extend: 'collection',
+               text: ' 导出工具 ',
+			   className:'fa fa-angle-down',
+			   width:'200',
+			   style:"background-color:blue",
+				
+               buttons: [
+			  // */
+				 
+				// {
+				//	'extend': 'colvis', 
+					
+				//},  */
+				{  
+            'extend': 'print',  
+            'text': '  打印',
+            'className':"fa fa-print",//按钮的class名称
+				},
+                 {  
+            'extend': 'excel',  
+            'text': '  保存为excel',
+			'title':'传感器数据库',
+            'className':'fa fa-file-excel-o',//按钮的class名称
+				} , 
+                 {  
+            'extend': 'pdf',  
+            'text': '  保存为pdf',
+			'title':'传感器数据库',
+            'className':'fa fa-file-pdf-o',//按钮的class名称 btn green  btn-outline
+				}   
+                    
+               ]
+            }
+              
+		],
         //dom: "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
         oLanguage: {
             sProcessing: "正在获取数据，请稍后...",
@@ -90,11 +129,33 @@ $(function() {
 
     //按钮事件触发
     //编辑参数
+	//传感器修改权限控制
     $(document).delegate('#ModifyOne', 'click', function () {
         var id = $(this).data("id");
-        $('#modifyBtnSubmit').val(id);
-        $('#myModal-modify-info').modal('show');
-
+       // $('#modifyBtnSubmit').val(id);
+        //$('#myModal-modify-info').modal('show');
+        $.ajax({
+            url:"/change_sensor_permission/",
+            data:$('#RquestModifyOne').data("id"),
+            cache: false,
+            type: "GET",
+            dataType: "json",
+            async: true,
+            success:function(data){
+                if (data.permisson == 'true')
+                {
+                  
+                    $('#modifyBtnSubmit').val(id);
+                    $('#myModal-modify-info').modal('show');
+                }
+				else 
+					alert("没有修改传感器权限！")
+			},
+             error:function(){
+                alert("请求异常！")
+            } 
+			});
+		
     });
     //监听编辑模态框弹出事件
     $('#myModal-modify-info').on('show.bs.modal', function () {
@@ -162,6 +223,7 @@ $(function() {
         $('#myModal-add-info').modal('show');
     });
     //提交新增参数请求
+	//表单验证
     $(document).delegate('#addBtnSubmit', 'click', function () {
         $.ajax({
             url: "/add_sensor/",
@@ -171,13 +233,30 @@ $(function() {
             dataType: "json",
             async: true,
             success: function (data) {
-                if (data.ok = "1")
+               if (data.check == "必填项不能为空")
                 {
-                    $('#myModal-add-info').modal('hide');
-                    window.location.reload();
+					
+					$('#alert-danger-2').attr('class', 'alert alert-danger display-hide');
+					$('#alert-danger-1').attr('class', 'alert alert-danger');
+					
+					alert("必填项不能为空");
+                    /* $('#myModal-add-info').modal('hide');
+                    window.location.reload(); */
                 }
-                else
-                    alert(data);
+                else if (data.check == "传感器型号已存在，请核对")
+				{	
+			        $('#alert-danger-1').attr('class', 'alert alert-danger display-hide');
+                    $('#alert-danger-2').attr('class', 'alert alert-danger');
+                    alert("传感器型号已存在，请核对");
+					$('#myModal-add-info').modal('show');
+				}
+				else
+				{
+					alert("添加成功");
+					$('#alert-success').attr('class', 'alert-success');
+                    $('#myModal-add-info').modal('hide');
+                    window.location.reload(); 
+                }
             },
             error: function (data) {
                 alert("请求异常！");
@@ -185,11 +264,34 @@ $(function() {
         });
     });
     // 删除按钮模态框触发
+	//删除传感器权限控制
     $(document).delegate('#deleteOne', 'click', function () {
         var id = $(this).data("id");//获取删除按钮中的data-id的值
         console.log(id);
-        $("#delSubmit").val(id);//赋值给删除确认按钮
-        $("#deleteOneModal").modal('show');
+        //$("#delSubmit").val(id);//赋值给删除确认按钮
+        //$("#deleteOneModal").modal('show');
+		$.ajax({
+            url:"/change_sensor_permission/",
+            data:$('#RquestModifyOne').data("id"),
+            cache: false,
+            type: "GET",
+            dataType: "json",
+            async: true,
+            success:function(data){
+                if (data.permisson == 'true')
+                {
+                  
+                   $("#delSubmit").val(id);//赋值给删除确认按钮
+                   $("#deleteOneModal").modal('show');
+                }
+				else 
+					alert("没有删除传感器权限！")
+			},
+            error:function(){
+                alert("请求异常！")
+            } 
+			});
+		
     });
     //提交删除请求
     $(document).delegate('#delSubmit', 'click', function () {

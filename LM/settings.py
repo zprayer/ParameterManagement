@@ -29,16 +29,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-#    'django.contrib.admin',
+  # 'django_admin_bootstrapped.bootstrap2.5.7',
+   'django_admin_bootstrapped',
+   'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'management.apps.ManagementConfig',
-    'xadmin',
-    'crispy_forms',
-    'reversion',
+   # 'management.apps.ManagementConfig',
+     'management',
+   # 'xadmin',
+   # 'crispy_forms',
+   # 'reversion',
 ]
 
 MIDDLEWARE_CLASSES = [
